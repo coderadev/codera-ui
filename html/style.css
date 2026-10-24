@@ -1,0 +1,96 @@
+/* Hint bar: glass panel, Barlow Condensed ExtraBold Italic, key icons + "/" dividers */
+@font-face {
+    font-family: 'Barlow Condensed';
+    font-style: italic;
+    font-weight: 800;
+    src: url('fonts/BarlowCondensed-ExtraBoldItalic.woff2') format('woff2');
+}
+
+:root {
+    --font: 'Barlow Condensed', 'Tahoma', 'Segoe UI', 'Arial Narrow', sans-serif;
+    --glass: rgba(0, 0, 0, 0.34);
+    --glass-line: rgba(255, 255, 255, 0.08);
+    --text: #fff;
+    --divider: rgba(255, 255, 255, 0.28);
+}
+
+* { margin: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent !important;
+    user-select: none;
+}
+
+#textUI {
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    display: flex;
+    align-items: center;
+    padding: 0.8vh 1.4vh;
+    background: var(--glass);
+    border: 1px solid var(--glass-line);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 1.55vh;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 1.5vh);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+}
+
+#textUI.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
+}
+
+.hint {
+    display: flex;
+    align-items: center;
+    gap: 0.75vh;
+    text-transform: uppercase;
+}
+
+.hint .keys {
+    display: flex;
+    align-items: center;
+    gap: 0.45vh;
+}
+
+.hint img {
+    height: 2.4vh;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
+}
+
+.keycap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.8vh;
+    height: 1.8vh;
+    padding: 0 0.5vh;
+    border-radius: 0.4vh;
+    background: #fff;
+    color: #1d2620;
+    font-style: normal;
+    font-size: 1.3vh;
+    line-height: 1;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
+}
+
+.plus { opacity: 0.9; }
+
+.sep {
+    margin: 0 0.8vh;
+    color: var(--divider);
+}
